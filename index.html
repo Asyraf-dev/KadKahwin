@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemputan Walimatul Urus</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #2c2f38;
+            color: #f5f5f5;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-image: url('https://source.unsplash.com/1600x900/?wedding'); /* Optional Background Image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blur: 10px;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            animation: fadeInPage 1s ease-in-out; /* Animation for the whole page */
+        }
+
+        /* Fade-in Animation for Page */
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            overflow: hidden;
+            animation: slideIn 1s ease-out; /* Animation for content */
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #ffd700;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: fadeInText 2s ease-out; /* Animation for header */
+        }
+
+        /* Fade-in animation for text */
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Play Button (Right Corner) */
+        .play-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2em;
+            background-color: #ffd700;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background-color: #c39b00;
+        }
+
+        .audio-player {
+            margin-top: 30px;
+            animation: fadeInText 3s ease-out;
+            display: block; /* Display the play button */
+        }
+
+        .couple-names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            animation: fadeInText 2s ease-out;
+        }
+
+        .couple-names h3 {
+            margin: 0 10px;
+        }
+
+        .couple-names span {
+            font-size: 1.6em;
+            color: #ffd700;
+        }
+
+        /* Event Info Section */
+        .event-info {
+            text-align: left; /* Align text to the left */
+            margin-top: 10px;
+            padding-left: 10px; /* Add padding to the left for better spacing */
+            animation: fadeInText 5s ease-out;
+        }
+
+        .event-info div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .event-info div strong {
+            color: #ffd700; /* Yellow for labels */
+            font-weight: 600;
+            min-width: 100px; /* Fixed width for the labels */
+        }
+
+        .event-info div p {
+            font-size: 1em;
+            margin: 0;
+            color: #fff; /* White for values */
+            word-wrap: break-word; /* Ensure long text breaks to new line */
+            flex-grow: 1; /* Allow the value text to take the remaining space */
+        }
+
+        /* Countdown Timer - Professional Design */
+        .countdown {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            animation: fadeInText 6s ease-out;
+        }
+
+        .countdown div {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .countdown div:hover {
+            background-color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .countdown div span {
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .countdown div .time-unit {
+            font-size: 0.8em;
+            color: #fff;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            font-size: 1em;
+            background-color: #ffd700;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            animation: fadeInText 7s ease-out;
+        }
+
+        .btn:hover {
+            background-color: #c39b00;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 600;
+            animation: fadeInText 8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 20px;
+            }
+
+            .countdown {
+                gap: 10px;
+                font-size: 1.1em;
+            }
+
+            .countdown div {
+                width: 80px;
+                height: 80px;
+                padding: 15px;
+            }
+
+            .countdown div span {
+                font-size: 1.8em;
+            }
+
+            .footer {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .countdown {
+                gap: 8px;
+                font-size: 1em;
+            }
+
+            .countdown div {
+                width: 60px;
+                height: 60px;
+                padding: 12px;
+            }
+
+            .countdown div span {
+                font-size: 1.5em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 8px 18px;
+            }
+
+            .footer {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .countdown {
+                gap: 6px;
+                font-size: 0.9em;
+                flex-direction: row;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .countdown div {
+                width: 50px;
+                height: 50px;
+                padding: 8px;
+            }
+
+            .countdown div span {
+                font-size: 1.3em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+                padding: 6px 14px;
+            }
+
+            .footer {
+                font-size: 0.8em;
+            }
+
+            .quote {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JEMPUTAN WALIMATUL URUS</h1>
+            <p class="arabic">‎ بِسۡـــــــــمِ ٱللَّهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــمِ </p>
+            <p class="quote">"Dan Kami menciptakan kamu berpasang-pasangan" (Surah An-Naba' : 8)</p>
+        </header>
+
+        <section class="invitation-details">
+            <div class="couple-names">
+                <h3 class="azrin">Azrin</h3>
+                <span class="ampersand">&amp;</span>
+                <h3 class="irin">Irin Izawati</h3>
+            </div>
+            <div class="event-info">
+                <div>
+                    <strong>TARIKH</strong>
+                    <p>: 14 Jun 2025</p>
+                </div>
+                <div>
+                    <strong>MASA</strong>
+                    <p>: 12:00 - 4:00 PETANG</p>
+                </div>
+                <div>
+                    <strong>TEMPAT</strong>
+                    <p>: 14, Jalan Kempas, Taman Pelangi, 31000 Batu Gajah, Perak</p>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div id="days">
+                    <span id="days-count">0</span>
+                    <span class="time-unit">Hari</span>
+                </div>
+                <div id="hours">
+                    <span id="hours-count">0</span>
+                    <span class="time-unit">Jam</span>
+                </div>
+                <div id="minutes">
+                    <span id="minutes-count">0</span>
+                    <span class="time-unit">Minit</span>
+                </div>
+                <div id="seconds">
+                    <span id="seconds-count">0</span>
+                    <span class="time-unit">Saat</span>
+                </div>
+            </div>
+
+            <!-- Play Audio Button (Right Corner) -->
+            <button class="play-btn" onclick="playAudio()">▶️</button>
+            <div class="audio-player">
+                <audio id="audio">
+                    <source src="Paluan Kompang.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Google Maps Link -->
+            <div class="location">
+                <a href="https://www.google.com/maps?q=14,+Jalan+Kempas,+Taman+Pelangi,+31000+Batu+Gajah,+Perak" target="_blank" class="btn">Google Maps</a>
+            </div>
+
+            <div class="footer">
+                <p>Sponser by Electricaltechnologymy</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Play the audio for 25 seconds when the button is clicked
+        function playAudio() {
+            var audio = document.getElementById('audio');
+            audio.play(); // Play the audio
+
+            // Stop after 25 seconds
+            setTimeout(() => {
+                audio.pause();
+            }, 25000); // Stop after 25 seconds
+        }
+
+        // Countdown Timer Script
+        function updateCountdown() {
+            const weddingDate = new Date('June 14, 2025 12:00:00').getTime();
+            const currentDate = new Date().getTime();
+            const timeLeft = weddingDate - currentDate;
+
+            if (timeLeft <= 0) {
+                // Stop the countdown if the time has passed
+                clearInterval(countdownInterval);
+                document.getElementById('days-count').innerText = "0";
+                document.getElementById('hours-count').innerText = "0";
+                document.getElementById('minutes-count').innerText = "0";
+                document.getElementById('seconds-count').innerText = "0";
+                return;
+            }
+
+            // Calculate days, hours, minutes, and seconds left
+            const daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hoursLeft = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the countdown for individual cards
+            document.getElementById('days-count').innerText = daysLeft;
+            document.getElementById('hours-count').innerText = hoursLeft;
+            document.getElementById('minutes-count').innerText = minutesLeft;
+            document.getElementById('seconds-count').innerText = secondsLeft;
+        }
+
+        // Update countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to set the countdown on page load
+    </script>
+</body>
+</html>
